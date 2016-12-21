@@ -25644,11 +25644,17 @@
 
 	exports.default = _react2.default.createClass({
 	  displayName: 'BollingerChart',
+	  componentDidMount: function componentDidMount() {
+	    console.log('mounted');
+	  },
+	  componentWillReceiveProps: function componentWillReceiveProps() {
+	    console.log('will receive props');
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      'bollinger chart for ',
+	      'bollinger charrrrrrt for ',
 	      this.props.params.symbol
 	    );
 	  }
