@@ -25,11 +25,11 @@ def get_bollinger_bands(rm, rstd):
 
 @app.route('/')
 def root():
-  return send_from_directory('.', 'index.html')
+  return send_from_directory('./public', 'index.html')
 
-@app.route('/static/js/<path:path>')
+@app.route('/assets/<path:path>')
 def send_file(path):
-  return send_from_directory('static/js', path)
+  return send_from_directory('public/assets', path)
 
 @app.route('/api/bollinger/<symbol>')
 def get_symbol_data(symbol):
@@ -53,6 +53,9 @@ def get_symbol_data(symbol):
   # return jsonify(myDict)
   return jsonify(data[['daily_avgs','rm','rstd','upper','lower']].to_json())
 
+  @app.route('/<path:path>')
+  def catch_all(path):
+    return send_from_directory('./public', 'index.html')
 
 if __name__ == '__main__':
   app.run(port=8000, debug=True)
